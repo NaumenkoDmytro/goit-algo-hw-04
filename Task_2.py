@@ -13,26 +13,23 @@
 '''
 
 import re
+from File_Utility import read_file
 
 def get_cats_info(path):
-    final_list = list()
-    with open(path, 'r', encoding='utf-8') as fh:
-        for line in fh:
-                try:
-                    split_the_line = line.strip().split(',')
-                    if len(split_the_line) == 3: #without this check I had AttributeError: 'list' object attribute 'append' is read-only how to fix it
-                        cat_info = {
-                            'id': split_the_line[0],
-                            'name': split_the_line[1],
-                            'age': split_the_line[2]
-                        }
-                        final_list.append(cat_info)
-                except IndexError:
-                    print(f"Error: Line '{line.strip()}' does not contain all necessary elements.")
-                except FileNotFoundError:
-                    print(f"Error: File '{path}' not found.")
-                except Exception as e:
-                    print(f"Error: {e}")
+    final_list = []
+    lines = read_file(path)
+    for line in lines:
+        try:
+            split_the_line = line.strip().split(',')
+            if len(split_the_line) == 3: #without this check I had AttributeError: 'list' object attribute 'append' is read-only how to fix it
+                    cat_info = {
+                        'id': split_the_line[0],
+                        'name': split_the_line[1], #can't get it for 100% need help
+                        'age': split_the_line[2]
+                    }
+                    final_list.append(cat_info)
+        except Exception as e:
+                print(f"Error: {e}")
     return final_list
 
 
@@ -51,6 +48,6 @@ print(cats_info)
 #                 final_list.append =({
 #                     'id' : item[0],
 #                     'name': item[1],
-#                     "age": item[2]
+#                     'age": item[2]
 #                 })
 # here is my code but it has AttributeError: 'list' object attribute 'append' is read-only how to fix it
