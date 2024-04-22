@@ -15,7 +15,7 @@ from File_Utility import read_file
 
 
 def total_salary(path):
-    lines = read_file(path)
+    lines = read_file(path) #I wrote my own file open module to handle errors
     counter = 0
     total_salary = 0
     try:
@@ -25,8 +25,8 @@ def total_salary(path):
             total_salary += int(salary)
         average_salary = total_salary / counter
         return total_salary, average_salary
-    except ZeroDivisionError:
-        print("I think something wrong with the file path")
+    except ZeroDivisionError: #in this case we could have / 0 error becaue if the file path was broken the function return 0 and go ahead with calculations
+        print("I think something wrong with the file path") 
         return None
 
 
