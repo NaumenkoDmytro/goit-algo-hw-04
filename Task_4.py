@@ -26,8 +26,8 @@ def show_phone(args, contacts):
 
       
 def change_contact(args, contacts):
-    if args < 2:
-        return f'Enter the some more data'
+    if len(args) < 2:
+        return f'Enter some more data'
     name, phone = args
     if name in contacts:
         contacts[name] = phone
@@ -35,13 +35,17 @@ def change_contact(args, contacts):
 
 
 def parse_input(user_input):
+    user_input = user_input.strip()
+    if not user_input:
+        return []
+    
     cmd, *args = user_input.split()
-    cmd = cmd.strip().lower()
-    return cmd, *args
+    cmd = cmd.lower()
+    return cmd, args
 
 def add_contact(args, contacts):
-    if args < 2:
-        return f'Enter the some more data'
+    if len(args) < 2:
+        return f'Enter some more data'
     name, phone = args
     contacts[name] = phone
     return "Contact added."

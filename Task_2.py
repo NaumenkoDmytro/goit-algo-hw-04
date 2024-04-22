@@ -24,7 +24,7 @@ def get_cats_info(path):
             if len(split_the_line) == 3: #without this check I had AttributeError: 'list' object attribute 'append' is read-only how to fix it
                     cat_info = {
                         'id': split_the_line[0],
-                        'name': split_the_line[1], #can't get it for 100% need help
+                        'name': split_the_line[1], 
                         'age': split_the_line[2]
                     }
                     final_list.append(cat_info)
