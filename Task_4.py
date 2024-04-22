@@ -10,23 +10,23 @@
 На першому етапі наш бот-асистент повинен вміти зберігати ім'я та номер телефону, знаходити номер телефону за ім'ям, змінювати записаний номер телефону, виводити в консоль всі записи, які зберіг. 
 Щоб реалізувати таку нескладну логіку, скористаємося словником. У словнику будемо зберігати ім'я користувача, як ключ, і номер телефону як значення.
 '''
-
+#Function that show all contacts.
 def show_all(contacts):
     return contacts
-
+#Function that show Phone number by users name.
 def show_phone(args, contacts):
     if args:
         name = args[0]
-        if name in contacts:
+        if name in contacts: #Check if we have this contact in the dictionary
             return contacts[name]
         else:
             return f'User name is empty' 
     else:
         return f'User name was not provided' 
 
-      
+#Function that change a phone number by users name.   
 def change_contact(args, contacts):
-    if len(args) < 2:
+    if len(args) < 2: #check if we have all arguments to work with from the list
         return f'Enter some more data'
     name, phone = args
     if name in contacts:
@@ -35,16 +35,15 @@ def change_contact(args, contacts):
 
 
 def parse_input(user_input):
-    user_input = user_input.strip()
-    if not user_input:
+    user_input = user_input.strip() 
+    if not user_input: #check if user just pressed the "Enter" button
         return []
-    
     cmd, *args = user_input.split()
     cmd = cmd.lower()
     return cmd, args
 
 def add_contact(args, contacts):
-    if len(args) < 2:
+    if len(args) < 2: #check if we have all arguments to work with from the list
         return f'Enter some more data'
     name, phone = args
     contacts[name] = phone
