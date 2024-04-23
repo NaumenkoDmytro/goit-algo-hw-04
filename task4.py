@@ -31,16 +31,14 @@ def change_contact(args, contacts):
     name, phone = args
     if name in contacts:
         contacts[name] = phone
-        return f'The contact  for {name}, was updated :)'
+        return f'Contact updated.'
 
 
 def parse_input(user_input):
-    user_input = user_input.strip() 
-    if not user_input: #check if user just pressed the "Enter" button
-        return []
-    cmd, *args = user_input.split()
-    cmd = cmd.lower()
-    return cmd, *args
+        user_input = user_input.strip() 
+        cmd, *args = user_input.split()
+        cmd = cmd.lower()
+        return cmd, *args
 
 def add_contact(args, contacts):
     if len(args) < 2: #check if we have all arguments to work with from the list
@@ -54,6 +52,9 @@ def main():
     print("Welcome to the assistant bot!")
     while True:
         user_input = input("Enter a command: ")
+        if not user_input.strip(): #check if the user just hit an empty enter
+            print("No command entered, please try again.") 
+            continue
         command, *args = parse_input(user_input)
 
         if command in ["close", "exit"]:
