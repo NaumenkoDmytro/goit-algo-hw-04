@@ -11,7 +11,7 @@ Sitarama Raju,1000
 Ваше завдання - розробити функцію total_salary(path), яка аналізує цей файл і повертає загальну та середню суму заробітної плати всіх розробників.
 '''
 import re
-from open_file import read_file
+from file_utility import read_file
 
 
 def total_salary(path):
