@@ -11,7 +11,7 @@ Sitarama Raju,1000
 Ваше завдання - розробити функцію total_salary(path), яка аналізує цей файл і повертає загальну та середню суму заробітної плати всіх розробників.
 '''
 import re
-from File_Utility import read_file
+from file_utility import read_file
 
 
 def total_salary(path):
@@ -27,14 +27,14 @@ def total_salary(path):
         return total_salary, average_salary
     except ZeroDivisionError: #in this case we could have / 0 error becaue if the file path was broken the function return 0 and go ahead with calculations
         print("I think something wrong with the file path") 
-        return None
+        return None, None
 
 
     
 
 
 
-total, average = total_salary('salary_file.txt')
+total, average = total_salary('salary_fi.txt')
 print(f"Загальна сума заробітної плати: {total}, Середня заробітна плата: {average}")
 
 

@@ -27,7 +27,7 @@ def show_phone(args, contacts):
 #Function that change a phone number by users name.   
 def change_contact(args, contacts):
     if len(args) < 2: #check if we have all arguments to work with from the list
-        return f'Enter some more data'
+        return f'Enter exactly two pieces of data: name and phone'
     name, phone = args
     if name in contacts:
         contacts[name] = phone
@@ -40,11 +40,11 @@ def parse_input(user_input):
         return []
     cmd, *args = user_input.split()
     cmd = cmd.lower()
-    return cmd, args
+    return cmd, *args
 
 def add_contact(args, contacts):
     if len(args) < 2: #check if we have all arguments to work with from the list
-        return f'Enter some more data'
+        return f'Enter exactly two pieces of data: name and phone'
     name, phone = args
     contacts[name] = phone
     return "Contact added."
